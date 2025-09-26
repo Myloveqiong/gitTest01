@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    nacos:
+     config:
+       server-addr: localhost:8848
+       file-extension: yaml
+       group: test
+       namespace: 123
+       name: userservice
+       refresh-enabled: true #要加这个配置

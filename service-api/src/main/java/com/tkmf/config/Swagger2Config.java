@@ -29,7 +29,7 @@ public class Swagger2Config {
         return new Docket(DocumentationType.SWAGGER_2) // 指定 api 类型为 swagger2
                 .apiInfo(apiInfo()) // 用于定义 api 文档汇总信息
                 .select()
-                .apis(Predicates.or(userPredicate)) // 使用逗号分割，可以加入多个(***，***)
+                .apis(Predicates.or(userPredicate,orderPredicate)) // 使用逗号分割，可以加入多个(***，***)
                 .paths(PathSelectors.any())     // 所有 controller
                 .build();
 

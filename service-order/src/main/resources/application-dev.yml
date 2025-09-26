@@ -1,0 +1,60 @@
+#########################################
+# 用户微服务
+# web访问端口 约定8001
+#########################################
+server:
+  port: 8002
+  tomcat:
+    uri-encoding: UTF-8
+    max-swallow-size: -1  # tomcat 默认大小 2M，超过 2M 的文件不会被捕获，需要调整此处大小为 100MB或者-1 即可
+#########################################
+# 配置项目信息
+#########################################
+spring:
+  application:
+    name: service-order
+  jackson: # 全局时间格式化
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  datasource: # 数据源的相关配置
+    type: com.zaxxer.hikari.HikariDataSource  # 数据源类型:HikariCP
+    driver-class-name: com.mysql.cj.jdbc.Driver # mysql驱动
+    url: jdbc:mysql://localhost:3306/jingdong_mall?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=true
+    username: root
+    password: 123456
+    hikari:
+      connection-timeout: 30000 # 等待连接池分配连接的最大时长(毫秒)，超过这个时长还没可用的连接则发生 SQLException，默认:30 秒
+      minimum-idle: 5 # 最小连接数
+      maximum-pool-size: 20 # 最大连接数
+      auto-commit: true #自动提交
+      idle-timeout: 600000 # 连接超时的最大时长(毫秒)，超时则被释放(retired),默认:10 分钟
+      pool-name: DataSourceHikariCP # 连接池名字
+      max-lifetime: 1800000 # 连接的生命时长(亳秒)，超时而且没被使用则被释放(retired)，默认:30分钟  1800000ms
+      connection-test-query: SELECT 1
+# redis配置
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+  #########################################
+  # mybatis配置
+  #########################################
+
+mybatis:
+  type-aliases-package: com.hanma.pojo # 所有POJO类所在的包路径
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+   log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  #########################################
+  # mybatis mapper配置
+  #########################################
+  # 通用mapper配置
+mapper:
+  mappers: com.tkmf.mapper.MyMapper
+  not-empty: false # 在进行数据库操作的时候，判断表达式 username != null，是否追加 username != ''
+  identity: MYSQL
+  # 分页插件配置
+pagehelper:
+  helper-dialect: mysql
+  support-methods-arguments: true
+

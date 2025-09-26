@@ -3,7 +3,7 @@
 # web访问端口 约定8001
 #########################################
 server:
-  port: 8001
+  port: ${port:8001}
   tomcat:
     uri-encoding: UTF-8
     max-swallow-size: -1  # tomcat 默认大小 2M，超过 2M 的文件不会被捕获，需要调整此处大小为 100MB或者-1 即可
@@ -31,6 +31,27 @@ spring:
       pool-name: DataSourceHikariCP # 连接池名字
       max-lifetime: 1800000 # 连接的生命时长(亳秒)，超时而且没被使用则被释放(retired)，默认:30分钟  1800000ms
       connection-test-query: SELECT 1
+# redis配置
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+
+#  rabbitmq配置
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: jd_mall
+
+  #########################################
+  # nacos配置
+  #########################################
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 192.168.10.1:8848
 
   #########################################
   # mybatis配置
@@ -52,3 +73,11 @@ mapper:
 pagehelper:
   helper-dialect: mysql
   support-methods-arguments: true
+
+
+
+
+
+
+
+

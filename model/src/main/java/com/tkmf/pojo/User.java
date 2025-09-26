@@ -10,7 +10,7 @@ import java.util.Date;
 
 @Data
 @Table(name = "hanma_user")
-public class HanmaUser {
+public class User {
     @Id
     private Integer id;
 
@@ -67,7 +67,7 @@ public class HanmaUser {
     /**
      * 0禁止 1正常
      */
-    private Boolean status;
+    private Integer status;
 
     /**
      * 创建时间

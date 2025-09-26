@@ -1,6 +1,7 @@
 package com.tkmf.config;
 
 import com.tkmf.interceptor.PassPortInterceptor;
+import com.tkmf.interceptor.UserTokenInterceptor;
 import org.apache.ibatis.plugin.Intercepts;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,10 +14,19 @@ public class Interceptor implements WebMvcConfigurer {
     public PassPortInterceptor passPortInterceptor(){
         return new PassPortInterceptor();
     }
+    @Bean
+    public UserTokenInterceptor userTokenInterceptor(){
+        return new UserTokenInterceptor();
+    }
 
+    //注册拦截器
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(passPortInterceptor())
-                .addPathPatterns("/passport/getMessage");
+                .addPathPatterns("/user/getSMSCode");
+        registry.addInterceptor(userTokenInterceptor())
+                .addPathPatterns("/user/orders");
     }
+
+
 }

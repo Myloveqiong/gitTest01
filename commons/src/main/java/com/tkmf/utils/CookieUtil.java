@@ -61,7 +61,7 @@ public class CookieUtil {
     public static void setCookieValue(HttpServletResponse repsonse,
                                  String name, String value, int maxAge){
         Cookie cookie = new Cookie(name, value);
-        cookie.setDomain(DOMAIN_NAME);
+//        cookie.setDomain(DOMAIN_NAME);
         cookie.setPath("/");//可在同一服务器内使用
         cookie.setMaxAge(maxAge);
         repsonse.addCookie(cookie);

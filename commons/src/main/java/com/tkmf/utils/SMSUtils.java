@@ -39,14 +39,14 @@ public class SMSUtils {
         request.putQueryParameter("TemplateCode", aliyunResource.getTemplateCode());
         request.putQueryParameter("TemplateParam", "{\"code\":\"" + code + "\"}");
 
-        try {
-            CommonResponse response = client.getCommonResponse(request);
-            System.out.println(response.getData());
-        } catch (ServerException e) {
-            e.printStackTrace();
-        } catch (ClientException e) {
-            e.printStackTrace();
-        }
+//        try {
+////            CommonResponse response = client.getCommonResponse(request);
+////            System.out.println(response.getData());
+//        } catch (ServerException e) {
+//            e.printStackTrace();
+//        } catch (ClientException e) {
+//            e.printStackTrace();
+//        }
     }
 }
 

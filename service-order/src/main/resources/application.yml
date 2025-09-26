@@ -1,0 +1,22 @@
+#########################################
+# 用户微服务
+# web访问端口 约定8001
+#########################################
+server:
+  port: 8002
+  tomcat:
+    uri-encoding: UTF-8
+    max-swallow-size: -1  # tomcat 默认大小 2M，超过 2M 的文件不会被捕获，需要调整此处大小为 100MB或者-1 即可
+#########################################
+# 配置项目信息
+#########################################
+spring:
+  application:
+    name: service-order
+  jackson: # 全局时间格式化
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  profiles:
+    active: dev
+logging:
+  config: classpath:logback-spring.xml
